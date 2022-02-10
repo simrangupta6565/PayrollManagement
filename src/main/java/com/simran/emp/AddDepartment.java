@@ -1,4 +1,4 @@
-package com.simran.presentation;
+package com.simran.emp;
 
 import java.util.Iterator;
 import java.util.List;
@@ -6,10 +6,9 @@ import java.util.Scanner;
 
 import org.springframework.context.ApplicationContext;
 
-import com.simran.presentation.model.Department;
-import com.simran.presentation.model.Grade;
-import com.simran.presentation.service.DepartmentService;
-import com.simran.presentation.service.GradeService;
+import com.simran.emp.model.Department;
+import com.simran.emp.service.DepartmentService;
+
 
 public class AddDepartment {
 	public static void findAll(ApplicationContext ac) {
@@ -21,7 +20,7 @@ public class AddDepartment {
 		System.out.println("\t----------------------------------------------------------------------------");
 		while(itr.hasNext()) {
 			Department d = itr.next();
-			System.out.println("\t\t\t"+d.getDepartmentId()+"\t\t\t"+d.getDepartmentName());
+			System.out.println("\t\t\t"+d.getDepartmentId()+"\t\t\t\t"+d.getDepartmentName());
 		}
 		System.out.println("\t----------------------------------------------------------------------------");
 		
@@ -35,22 +34,22 @@ public class AddDepartment {
 			System.out.println("2. Delete Department ");
 			System.out.println("3. Back");
 			System.out.println("4. Exit");
-			System.out.println("Enter the Choice:");
-			Integer option = Integer.parseInt(input.nextLine());
+			System.out.print("Enter the Choice: ");
+			Integer option = input.nextInt();
 			Department d = new Department();
 			switch(option)
 			{
 				case 1:
-					System.out.println("Enter Department Name:");
-					String departmentname = input.nextLine();
+					System.out.print("Enter Department Name: ");
+					String departmentname = input.next();
 					d.setDepartmentName(departmentname);
 					departmentService.addDepartment(d);
 					System.out.println("Department Added!");
 					findAll(ac);
 					break;
 				case 2:
-					System.out.println("Enter Department Id:");
-					int departmentId = Integer.parseInt(input.nextLine());
+					System.out.print("Enter Department Id: ");
+					int departmentId = input.nextInt();
 					departmentService.deleteDepartment(departmentId);
 					findAll(ac);
 					break;
@@ -61,10 +60,11 @@ public class AddDepartment {
 					System.out.println("Exit");
 					System.exit(0);
 			}
-			System.out.println("Do you want to continue");
-			String choice = input.nextLine() ;
+			System.out.print("Do you want to continue ");
+			String choice = input.next() ;
 			if(choice.equals("no")) {
 				System.out.println("User don't want to continue");
+				input.close();
 				System.exit(0);
 			}
 		}	

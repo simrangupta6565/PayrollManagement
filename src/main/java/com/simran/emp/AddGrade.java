@@ -1,4 +1,4 @@
-package com.simran.presentation;
+package com.simran.emp;
 
 import java.util.Iterator;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 import org.springframework.context.ApplicationContext;
 
-import com.simran.presentation.model.Grade;
-import com.simran.presentation.service.GradeService;
-import com.simran.presentation.service.ManageService;
+import com.simran.emp.model.Grade;
+import com.simran.emp.service.GradeService;
+
 
 public class AddGrade {
 	public static void findAll(ApplicationContext ac) {
@@ -43,40 +43,40 @@ public class AddGrade {
 			System.out.println("2. Delete Grade");
 			System.out.println("3. Back");
 			System.out.println("4. Exit");
-			System.out.println("Enter the Choice:");
-			Integer option = Integer.parseInt(input.nextLine());
+			System.out.print("Enter the Choice:");
+			Integer option = input.nextInt();
 			Grade g = new Grade();
 			switch(option)
 			{
 				case 1:
-					System.out.println("Enter the Grade Name:");
-					gradeName = input.nextLine();
+					System.out.print("Enter the Grade Name: ");
+					gradeName = input.next();
 					g.setGradeName(gradeName);
-					System.out.println("Enter the  Grade Basic Pay:");
-					gradeBasic = Double.parseDouble(input.nextLine());
+					System.out.print("Enter the  Grade Basic Pay: ");
+					gradeBasic = input.nextDouble();
 					g.setGradeBasic(gradeBasic);
-					System.out.println("Enter the  Dearness Allowance(Percentage Value):");
-					gradeDa =  Double.parseDouble(input.nextLine());
+					System.out.print("Enter the  Dearness Allowance(Percentage Value): ");
+					gradeDa =  input.nextDouble();
 					g.setGradeDa(gradeDa);
-					System.out.println("Enter the House Rent Allowance(Percentage Value):");
-					gradeHra = Double.parseDouble(input.nextLine());
+					System.out.print("Enter the House Rent Allowance(Percentage Value): ");
+					gradeHra = input.nextDouble();
 					g.setGradeHra(gradeHra);
-					System.out.println("Enter the  Medical Allowance(Percentage Value):");
-					gradeMa =  Double.parseDouble(input.nextLine());
+					System.out.print("Enter the  Medical Allowance(Percentage Value): ");
+					gradeMa =  input.nextDouble();
 					g.setGradeMa(gradeMa);
-					System.out.println("Enter the  Bonus(Percentage Value):");
-					gradeBonus = Double.parseDouble(input.nextLine());
+					System.out.print("Enter the  Bonus(Percentage Value): ");
+					gradeBonus = input.nextDouble();
 					g.setGradeBonus(gradeBonus);
-					System.out.println("Enter the  Provident Fund(Percentage Value):");
-					gradePf = Double.parseDouble(input.nextLine());
+					System.out.print("Enter the  Provident Fund(Percentage Value): ");
+					gradePf = input.nextDouble();
 					g.setGradePf(gradePf);
 					gradeService.addGrade(g);
 					System.out.println("Grade Details Successfully Added");
 					findAll(ac);
 					break;
 				case 2:
-					System.out.println("Enter Grade Id:");
-					gradeId= Integer.parseInt(input.nextLine());
+					System.out.print("Enter Grade Id: ");
+					gradeId= input.nextInt();
 					gradeService.deleteGrade(gradeId);
 					System.out.println("Grade Details Successfully Deleted");
 					findAll(ac);
@@ -88,10 +88,11 @@ public class AddGrade {
 					System.out.println("Exit");
 					System.exit(0);
 			}
-			System.out.println("Do you want to continue");
-			String choice = input.nextLine();
+			System.out.print("Do you want to continue");
+			String choice = input.next();
 			if(choice.equals("no")) {
-				System.out.println("User don't want to continue");;
+				System.out.println("User don't want to continue");
+				input.close();
 				System.exit(0);
 			}
 		}	

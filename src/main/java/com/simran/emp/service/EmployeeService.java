@@ -1,15 +1,16 @@
-package com.simran.presentation.service;
+package com.simran.emp.service;
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.simran.presentation.model.Employee;
-@Service
-public class ManageService {
-	@Autowired
-	private  ManageOperations db;
 
+import com.simran.emp.model.Employee;
+@Service
+public class EmployeeService {
+	@Autowired
+	private  EmployeeOperations db;
 	public void addRecord(Employee employee) {
 			db.save(employee);
 		}

@@ -1,4 +1,4 @@
-package com.simran.presentation.service;
+package com.simran.emp.service;
 
 
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.simran.presentation.model.Department;
+import com.simran.emp.model.Department;
 
 
 @Service
@@ -30,7 +30,7 @@ public class DepartmentService {
 		db.delete(d);
 		return "Department Removed!";
 	}
-	private Department getDepartment(int departmentId) {
+	public Department getDepartment(int departmentId) {
 		Department d = null;
 		Optional<Department> opt = db.findById(departmentId);
 		if(!opt.isEmpty())

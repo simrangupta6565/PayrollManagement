@@ -1,4 +1,4 @@
-package com.simran.presentation.model;
+package com.simran.emp.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
